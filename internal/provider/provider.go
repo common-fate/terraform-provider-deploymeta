@@ -90,7 +90,7 @@ func (p *DeploymentProvider) Configure(ctx context.Context, req provider.Configu
 
 func (p *DeploymentProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		NewNameserversResource,
+		NewDNSRecordResource,
 	}
 }
 
