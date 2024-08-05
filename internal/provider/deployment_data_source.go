@@ -29,9 +29,8 @@ type DeploymentDataSource struct {
 
 // DeploymentDataSourceModel describes the data source data model.
 type DeploymentDataSourceModel struct {
-	DNSZoneName      types.String `tfsdk:"dns_zone_name"`
-	DefaultSubdomain types.String `tfsdk:"default_subdomain"`
 	Id               types.String `tfsdk:"id"`
+	DefaultAppDomain types.String `tfsdk:"default_app_domain"`
 }
 
 func (d *DeploymentDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
@@ -47,12 +46,8 @@ func (d *DeploymentDataSource) Schema(ctx context.Context, req datasource.Schema
 				MarkdownDescription: "The deployment ID",
 				Computed:            true,
 			},
-			"dns_zone_name": schema.StringAttribute{
-				MarkdownDescription: "The default DNS zone name associated with the deployment",
-				Computed:            true,
-			},
-			"default_subdomain": schema.StringAttribute{
-				MarkdownDescription: "The default DNS subdomain associated with the deployment",
+			"default_app_domain": schema.StringAttribute{
+				MarkdownDescription: "The default app domain for the deployment",
 				Computed:            true,
 			},
 		},
@@ -96,8 +91,7 @@ func (d *DeploymentDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	}
 
 	data.Id = types.StringValue(apiRes.Msg.Deployment.Id)
-	data.DNSZoneName = types.StringValue(apiRes.Msg.Deployment.DnsZoneName)
-	data.DefaultSubdomain = types.StringValue(apiRes.Msg.Deployment.DefaultSubdomain)
+	data.DefaultAppDomain = types.StringValue(apiRes.Msg.Deployment.DefaultAppDomain)
 
 	tflog.Trace(ctx, "read deployment metadata")
 

@@ -6,10 +6,9 @@ toolchain go1.22.1
 
 require (
 	connectrpc.com/connect v1.14.0
-	github.com/common-fate/sdk v1.51.2-0.20240805112400-843ff371965e
+	github.com/common-fate/sdk v1.51.2-0.20240805171122-82f5839f67c0
 	github.com/hashicorp/terraform-plugin-docs v0.19.1
 	github.com/hashicorp/terraform-plugin-framework v1.8.0
-	github.com/hashicorp/terraform-plugin-go v0.22.2
 	github.com/hashicorp/terraform-plugin-log v0.9.0
 )
 
@@ -40,6 +39,7 @@ require (
 	github.com/hashicorp/hc-install v0.6.4 // indirect
 	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-json v0.21.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.22.2 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
