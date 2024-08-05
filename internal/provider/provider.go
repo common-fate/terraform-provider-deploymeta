@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 package provider
 
 import (
@@ -29,10 +26,8 @@ type DeploymentProvider struct {
 
 // DeploymentProviderModel describes the provider data model.
 type DeploymentProviderModel struct {
-	BaseURL        types.String `tfsdk:"base_url"`
-	OIDCIssuer     types.String `tfsdk:"oidc_issuer"`
-	LicenceKey     types.String `tfsdk:"licence_key"`
-	DeploymentName types.String `tfsdk:"deployment_name"`
+	BaseURL    types.String `tfsdk:"base_url"`
+	LicenceKey types.String `tfsdk:"licence_key"`
 }
 
 func (p *DeploymentProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -47,16 +42,8 @@ func (p *DeploymentProvider) Schema(ctx context.Context, req provider.SchemaRequ
 				MarkdownDescription: "The Common Fate Factory base URL. Defaults to https://factory.commonfate.io.",
 				Optional:            true,
 			},
-			"oidc_issuer": schema.StringAttribute{
-				MarkdownDescription: "The Common Fate Factory OIDC issuer. Defaults to https://factory.commonfate.io.",
-				Optional:            true,
-			},
 			"licence_key": schema.StringAttribute{
 				MarkdownDescription: "The Common Fate licence key.",
-				Required:            true,
-			},
-			"deployment_name": schema.StringAttribute{
-				MarkdownDescription: "The Common Fate deployment name.",
 				Required:            true,
 			},
 		},
@@ -73,10 +60,8 @@ func (p *DeploymentProvider) Configure(ctx context.Context, req provider.Configu
 	}
 
 	cfg, err := factoryconfig.Load(context.Background(), factoryconfig.Opts{
-		LicenceKey:     data.LicenceKey.ValueString(),
-		DeploymentName: data.DeploymentName.ValueString(),
-		BaseURL:        data.BaseURL.ValueString(),
-		OIDCIssuer:     data.OIDCIssuer.ValueString(),
+		LicenceKey: data.LicenceKey.ValueString(),
+		BaseURL:    data.BaseURL.ValueString(),
 	})
 
 	if err != nil {
@@ -91,6 +76,7 @@ func (p *DeploymentProvider) Configure(ctx context.Context, req provider.Configu
 func (p *DeploymentProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		NewDNSRecordResource,
+		NewTerraformOutputResource,
 	}
 }
 
