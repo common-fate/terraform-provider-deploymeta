@@ -21,6 +21,5 @@ data "deploymeta_deployment" "this" {}
 
 ### Read-Only
 
-- `default_subdomain` (String) The default DNS subdomain associated with the deployment
-- `dns_zone_name` (String) The default DNS zone name associated with the deployment
+- `default_app_domain` (String) The default app domain for the deployment
 - `id` (String) The deployment ID
