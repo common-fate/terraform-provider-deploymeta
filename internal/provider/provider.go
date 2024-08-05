@@ -77,6 +77,7 @@ func (p *DeploymentProvider) Resources(ctx context.Context) []func() resource.Re
 	return []func() resource.Resource{
 		NewDNSRecordResource,
 		NewTerraformOutputResource,
+		NewAWSACMCertificateResource,
 	}
 }
 
