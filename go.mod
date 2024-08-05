@@ -6,7 +6,7 @@ toolchain go1.22.1
 
 require (
 	connectrpc.com/connect v1.14.0
-	github.com/common-fate/sdk v1.51.2-0.20240805171122-82f5839f67c0
+	github.com/common-fate/sdk v1.52.0
 	github.com/hashicorp/terraform-plugin-docs v0.19.1
 	github.com/hashicorp/terraform-plugin-framework v1.8.0
 	github.com/hashicorp/terraform-plugin-log v0.9.0
