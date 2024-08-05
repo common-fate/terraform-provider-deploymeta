@@ -69,7 +69,7 @@ func (r *AWSACMCertificateResource) Schema(ctx context.Context, req resource.Sch
 			},
 			"status": schema.StringAttribute{
 				MarkdownDescription: "The status of the certificate",
-				Computed:            true,
+				Required:            true,
 			},
 		},
 	}
